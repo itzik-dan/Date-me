@@ -23,6 +23,7 @@ const OAuth = ({ setLoading }) => {
       // If user doesn't exist, create user
       if (!docSnap.exists()) {
         await setDoc(doc(db, "users", user.uid), {
+          id: user.uid,
           name: user.displayName,
           email: user.email,
           timestamp: serverTimestamp(),

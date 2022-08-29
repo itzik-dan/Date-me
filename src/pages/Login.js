@@ -1,12 +1,24 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import OAuth from "../components/OAuth";
 import Spinner from "../components/Spinner";
+import useAuth from "../hooks/useAuth";
 
 const Login = () => {
   const year = new Date().getFullYear();
   const [loading, setLoading] = useState(false);
 
-  if (loading) return <Spinner />;
+  let navigate = useNavigate();
+  const { loggedIn, checkingStatus } = useAuth();
+
+  // Redirect if user is logged in
+  useEffect(() => {
+    if (loggedIn) {
+      navigate("/");
+    }
+  }, [loggedIn, navigate]);
+
+  if (loading || checkingStatus) return <Spinner />;
 
   return (
     <div className="flex flex-col items-center justify-around min-h-screen">

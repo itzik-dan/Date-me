@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-const NotFound = () => {
+const SelectMatch = () => {
   return (
     <div>
       <div className="min-h-screen mx-auto max-w-screen-lg flex flex-col justify-center items-center -mt-20">
@@ -14,4 +14,4 @@ const NotFound = () => {
   );
 };
 
-export default NotFound;
+export default SelectMatch;
